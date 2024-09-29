@@ -40,4 +40,4 @@ def create_menu():
 
 menu = create_menu()
 for item in menu:
-    print(item)
+    print(item)T
