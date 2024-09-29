@@ -24,11 +24,8 @@ menu_items = [
 ]
 
 drink_items = ['D1', 'D2',  'D3', 'D4']
-appetizer_items = ['A1', 'A2',  'A3', 'A4', 'A5']
-salad_items = ['S1', 'S2', 'S3']
-entree_items = ['E1', 'E2',  'E3', 'E4']
-dessert_items = ['T1', 'T2',  'T3', 'T4']
 
+# Function to create the menu list of dictionaries
 def create_menu():
     menu_dict_list = []
     for item in menu_items:
@@ -44,44 +41,3 @@ def create_menu():
 menu = create_menu()
 for item in menu:
     print(item)
-
-def update_menu(menu, code, new_name=None, new_price=None):
-    for item in menu:
-        if item['code'] == code:
-            if new_name:
-                item['name'] = new_name
-            if new_price:
-                item['price'] = new_price
-            print(f"Updated item: {item}")
-            return
-    print(f"Item with code {code} not found.")
-
-
-def add_item(menu, code, name, price, stock):
-    menu.append({"code": code, "name": name, "price": price, "stock": stock})
-    print(f"Added new item: {code} - {name}")
-
-
-def remove_item(menu, code):
-    menu[:] = [item for item in menu if item['code'] != code]
-    print(f"Removed item with code {code}")
-
-def take_order(menu, code, quantity):
-    quantity = int(quantity)
-    for item in menu:
-        if item['code'] == code:
-            if item['stock'] >= quantity:
-                item['stock'] -= quantity
-                print(f"Order successful for {quantity} {item['name']}(s). Remaining stock: {item['stock']}")
-            else:
-                print(f"Not enough stock for {item['name']}. Available stock: {item['stock']}")
-            return
-    print(f"Item with code {code} not found.")
-
-
-def display_menu(menu):
-    print("\nCurrent Menu:")
-    for item in menu:
-        print(f"{item['code']}: {item['name']} - ${item['price']} | Stock: {item['stock']}")
-    print("\n")
-
